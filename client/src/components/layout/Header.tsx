@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Search, ShoppingBag, User, Menu, X, Settings, LogOut, BarChart3 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
@@ -16,7 +15,7 @@ export function Header() {
   const { isAuthenticated, user, logout } = useAuth();
   const { itemCount } = useCart();
   const router = useRouter();
-  
+
   // Initialize app data (auth and cart)
   useAppInitialization();
 
@@ -35,13 +34,11 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="relative w-12 h-12">
-                <Image
+              <div className="w-12 h-12">
+                <img
                   src="/logo.png"
                   alt="ShopSphere Logo"
-                  fill
-                  className="object-contain group-hover:scale-105 transition-transform duration-300"
-                  priority
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <span className="text-2xl font-bold text-earth-dark group-hover:text-earth-forest transition-colors">
@@ -110,7 +107,7 @@ export function Header() {
                     {isAdmin && <span className="text-earth-bronze ml-1">(Admin)</span>}
                   </span>
                 </button>
-                
+
                 {/* User Dropdown Menu */}
                 {isUserMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
@@ -120,7 +117,7 @@ export function Header() {
                         <p className="text-xs text-gray-500">{user?.email}</p>
                         {isAdmin && <p className="text-xs text-earth-bronze font-medium">Administrator</p>}
                       </div>
-                      
+
                       <Link
                         href="/account"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -131,7 +128,7 @@ export function Header() {
                           My Account
                         </div>
                       </Link>
-                      
+
                       {isAdmin && (
                         <>
                           <Link
@@ -156,7 +153,7 @@ export function Header() {
                           </Link>
                         </>
                       )}
-                      
+
                       <button
                         onClick={handleLogout}
                         className="block w-full text-left px-4 py-2 text-sm text-red-700 hover:bg-gray-100"
@@ -169,7 +166,7 @@ export function Header() {
                     </div>
                   </div>
                 )}
-                
+
                 {/* Click outside to close user menu */}
                 {isUserMenuOpen && (
                   <div
@@ -239,7 +236,7 @@ export function Header() {
               >
                 Categories
               </Link>
-              
+
               {isAdmin && (
                 <div className="pt-2 border-t border-earth-bronze/20">
                   <p className="text-xs text-earth-bronze font-medium mb-2">ADMIN</p>
@@ -261,7 +258,7 @@ export function Header() {
                   </Link>
                 </div>
               )}
-              
+
               <Link
                 href="/about"
                 className="text-earth-olive hover:text-earth-forest transition-colors font-medium"
@@ -276,7 +273,7 @@ export function Header() {
               >
                 Contact
               </Link>
-              
+
               {isAuthenticated ? (
                 <div className="pt-4 border-t border-gray-200">
                   <div className="flex flex-col space-y-2">
