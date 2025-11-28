@@ -21,7 +21,7 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-block">
               <h3 className="text-3xl font-bold text-white tracking-tight">
-                Modern<span className="text-earth-sage">Shop</span>
+                Shop<span className="text-earth-sage">Sphere</span>
               </h3>
             </Link>
             <p className="text-earth-light/80 leading-relaxed max-w-sm">
