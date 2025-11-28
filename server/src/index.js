@@ -14,8 +14,8 @@ const errorHandler = require('./middleware/errorHandler');
 
 // Initialize Next.js
 const dev = config.nodeEnv !== 'production';
-const nextApp = next({ 
-  dev, 
+const nextApp = next({
+  dev,
   dir: path.join(__dirname, '../../client')
 });
 const handle = nextApp.getRequestHandler();
@@ -41,8 +41,8 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: config.nodeEnv === 'production' 
-    ? config.clientUrl 
+  origin: config.nodeEnv === 'production'
+    ? config.clientUrl
     : ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true
 }));
@@ -53,6 +53,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Compression middleware
 app.use(compression());
+
+// Serve static files from client/public directory
+app.use(express.static(path.join(__dirname, '../../client/public')));
 
 // Logging middleware
 if (config.nodeEnv === 'development') {
@@ -112,7 +115,7 @@ app.all('*', (req, res) => {
       message: 'API route not found'
     });
   }
-  
+
   // Let Next.js handle the request
   return handle(req, res);
 });
