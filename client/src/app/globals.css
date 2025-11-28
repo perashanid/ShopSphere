@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply bg-accent-50 text-earth-dark antialiased;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-earth-bronze text-white px-6 py-3 rounded-md hover:bg-earth-caramel transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/80 backdrop-blur-sm text-earth-dark border border-earth-light/30 px-6 py-3 rounded-md hover:bg-earth-light/20 transition-all duration-300;
+  }
+  
+  .card-modern {
+    @apply bg-white/80 backdrop-blur-sm border border-earth-light/20 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply text-earth-bronze;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+/* 
+Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-earth-light/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-earth-sage/60 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-earth-olive;
+}
+
+/* Smooth animations */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Elegant hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #936639, #7f4f24, #582f0e, #a4ac86);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Elegant focus states */
+.focus-elegant:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(147, 102, 57, 0.1);
+  border-color: #936639;
+}
+
+/* Admin form styles */
+.form-input {
+  @apply w-full border border-earth-light/30 rounded-md px-3 py-2 text-sm bg-white/80 backdrop-blur-sm text-earth-dark focus-elegant;
+}
+
+.btn-admin {
+  @apply px-4 py-2 border border-earth-light/30 rounded-md text-sm font-medium text-earth-dark bg-white/80 backdrop-blur-sm hover:bg-earth-light/20 focus-elegant transition-colors;
+}
