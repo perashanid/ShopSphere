@@ -110,59 +110,65 @@ export function Header() {
 
                                 {/* User Dropdown Menu */}
                                 {isUserMenuOpen && (
-                                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50">
-                                        <div className="py-1">
-                                            <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
-                                                <p className="font-medium">{user?.profile?.firstName} {user?.profile?.lastName}</p>
-                                                <p className="text-xs text-gray-500">{user?.email}</p>
-                                                {isAdmin && <p className="text-xs text-earth-bronze font-medium">Administrator</p>}
+                                    <div className="absolute right-0 mt-2 w-64 bg-primary-50/95 backdrop-blur-md rounded-xl shadow-xl ring-1 ring-earth-sage/20 z-50 border border-earth-sage/30 transform origin-top-right transition-all duration-200">
+                                        <div className="py-2">
+                                            <div className="px-4 py-3 border-b border-earth-sage/20 bg-earth-sage/10">
+                                                <p className="text-sm font-bold text-earth-dark truncate">
+                                                    {user?.profile?.firstName} {user?.profile?.lastName}
+                                                </p>
+                                                <p className="text-xs text-earth-olive truncate mt-1 font-medium">
+                                                    {user?.email}
+                                                </p>
+                                                {isAdmin && (
+                                                    <div className="mt-2">
+                                                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-earth-bronze/10 text-earth-bronze border border-earth-bronze/20">
+                                                            Administrator
+                                                        </span>
+                                                    </div>
+                                                )}
                                             </div>
 
-                                            <Link
-                                                href="/account"
-                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                                onClick={() => setIsUserMenuOpen(false)}
-                                            >
-                                                <div className="flex items-center">
-                                                    <User className="h-4 w-4 mr-3" />
+                                            <div className="py-1">
+                                                <Link
+                                                    href="/account"
+                                                    className="group flex items-center px-4 py-2.5 text-sm text-earth-dark hover:bg-earth-sage/10 hover:text-earth-forest transition-colors"
+                                                    onClick={() => setIsUserMenuOpen(false)}
+                                                >
+                                                    <User className="mr-3 h-4 w-4 text-earth-sage group-hover:text-earth-olive transition-colors" />
                                                     My Account
-                                                </div>
-                                            </Link>
+                                                </Link>
 
-                                            {isAdmin && (
-                                                <>
-                                                    <Link
-                                                        href="/admin"
-                                                        className="block px-4 py-2 text-sm text-earth-bronze hover:bg-gray-100"
-                                                        onClick={() => setIsUserMenuOpen(false)}
-                                                    >
-                                                        <div className="flex items-center">
-                                                            <BarChart3 className="h-4 w-4 mr-3" />
+                                                {isAdmin && (
+                                                    <>
+                                                        <Link
+                                                            href="/admin"
+                                                            className="group flex items-center px-4 py-2.5 text-sm text-earth-dark hover:bg-earth-sage/10 hover:text-earth-forest transition-colors"
+                                                            onClick={() => setIsUserMenuOpen(false)}
+                                                        >
+                                                            <BarChart3 className="mr-3 h-4 w-4 text-earth-sage group-hover:text-earth-olive transition-colors" />
                                                             Admin Dashboard
-                                                        </div>
-                                                    </Link>
-                                                    <Link
-                                                        href="/admin/products"
-                                                        className="block px-4 py-2 text-sm text-earth-bronze hover:bg-gray-100"
-                                                        onClick={() => setIsUserMenuOpen(false)}
-                                                    >
-                                                        <div className="flex items-center">
-                                                            <Settings className="h-4 w-4 mr-3" />
+                                                        </Link>
+                                                        <Link
+                                                            href="/admin/products"
+                                                            className="group flex items-center px-4 py-2.5 text-sm text-earth-dark hover:bg-earth-sage/10 hover:text-earth-forest transition-colors"
+                                                            onClick={() => setIsUserMenuOpen(false)}
+                                                        >
+                                                            <Settings className="mr-3 h-4 w-4 text-earth-sage group-hover:text-earth-olive transition-colors" />
                                                             Manage Products
-                                                        </div>
-                                                    </Link>
-                                                </>
-                                            )}
+                                                        </Link>
+                                                    </>
+                                                )}
+                                            </div>
 
-                                            <button
-                                                onClick={handleLogout}
-                                                className="block w-full text-left px-4 py-2 text-sm text-red-700 hover:bg-gray-100"
-                                            >
-                                                <div className="flex items-center">
-                                                    <LogOut className="h-4 w-4 mr-3" />
+                                            <div className="border-t border-earth-sage/20 pt-1 mt-1">
+                                                <button
+                                                    onClick={handleLogout}
+                                                    className="group flex w-full items-center px-4 py-2.5 text-sm text-red-600 hover:bg-red-50/50 transition-colors"
+                                                >
+                                                    <LogOut className="mr-3 h-4 w-4 text-red-400 group-hover:text-red-500 transition-colors" />
                                                     Sign Out
-                                                </div>
-                                            </button>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
